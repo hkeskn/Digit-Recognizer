@@ -10,15 +10,13 @@ def prediction(net):
     drawing_mode = st.checkbox("Draw or clear?",True)
 
     # Create a canvas component
-    image_data = st_canvas(
-        15, '#FFF', '#000', height=280,width=280, drawing_mode=drawing_mode, key="canvas"
-    )
+    image_data = st_canvas(stroke_width=15, stroke_color="white", height=280, width=280, drawing_mode="freedraw", key="canvas")
 
     # Predicting the image
     if image_data is not None:
         if st.button('Predict'):
             # Model inference
-            digit, confidence = predictDigit(image_data,net)
+            digit, confidence = predictDigit(image_data.image_data, net)
             st.write('Recognized Digit: {}'.format(digit))
             st.write('Confidence: {:.2f}'.format(confidence))
 
