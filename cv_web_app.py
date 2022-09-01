@@ -10,7 +10,9 @@ def prediction(net):
     drawing_mode = st.checkbox("Draw or clear?",True)
 
     # Create a canvas component
-    image_data = st_canvas(stroke_color="white", height=280, width=280, drawing_mode="freedraw", key="canvas")
+    image_data = st_canvas(
+        15, '#FFF', '#000', height=280,width=280, drawing_mode=drawing_mode, key="canvas"
+    )
 
     # Predicting the image
     if image_data is not None:
